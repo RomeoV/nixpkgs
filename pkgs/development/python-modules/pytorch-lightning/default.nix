@@ -4,6 +4,7 @@
 , isPy27
 , future
 , fsspec
+, numpy
 , packaging
 , pytestCheckHook
 , torch
@@ -14,21 +15,22 @@
 
 buildPythonPackage rec {
   pname = "pytorch-lightning";
-  version = "1.6.5";
+  version = "1.6.3";
 
   disabled = isPy27;
 
   src = fetchFromGitHub {
-    owner = "PyTorchLightning";
-    repo = pname;
+    owner = "Lightning-AI";
+    repo = "lightning";
     rev = "refs/tags/${version}";
-    hash = "sha256-CgD5g5nhz2DI4gOQyPl8/Cq6wWHzL0ALgOB5SgUOgaI=";
+    sha256 = "0ppdjykz1p70zn21yyp3w2iqmlr4bz7zdhh6gx89kjrq7yp0ai9h";
   };
 
   propagatedBuildInputs = [
     packaging
     future
     fsspec
+    numpy
     torch
     pyyaml
     tensorboard
